@@ -1,4 +1,4 @@
-package pft.addressbook;
+package pft.addressbook.model;
 
 public class ContactData {
     private final String firstname;
