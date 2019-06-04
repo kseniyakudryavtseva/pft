@@ -44,4 +44,14 @@ public class ContactHelper extends HelperBase {
     public void submitContactDeletion() {
         alertAccept();
     }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td/input"));
+    }
+
+    public void createContact(ContactData contactData) {
+        initContactCreation();
+        fillContactForm(contactData);
+        submitContactCreation();
+    }
 }
