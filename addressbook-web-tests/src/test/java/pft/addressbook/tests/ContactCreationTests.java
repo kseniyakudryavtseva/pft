@@ -3,27 +3,27 @@ package pft.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pft.addressbook.model.ContactData;
-import java.util.Comparator;
-import java.util.List;
+import pft.addressbook.model.Contacts;
+
+import java.util.Set;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 
 public class ContactCreationTests extends TestBase {
 
   @Test
   public void testContactCreation() throws Exception {
-    app.getNavigationHelper().gotoHomePage();
-    List<ContactData> before = app.getContactHelper().getContactList();
-    app.getContactHelper().initContactCreation();
-    ContactData contact = new ContactData("Name1", "Middle name1", "Last name1", "9999999999");
-    app.getContactHelper().fillContactForm(contact);
-    app.getContactHelper().submitContactCreation();
-    app.getNavigationHelper().gotoHomePage();
-    List<ContactData> after = app.getContactHelper().getContactList();
-    Assert.assertEquals(after.size(), before.size() + 1);
-    before.add(contact);
-    Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
-    before.sort(byId);
-    after.sort(byId);
-    Assert.assertEquals(before, after);
+    app.goTo().homePage();
+    Contacts before = app.contact().all();
+    ContactData contact = new ContactData().withFirstname("Name1").withMiddlename("Middle name1")
+            .withLastname("Last name1").withHomephone("9999999999");
+    app.contact().create(contact);
+    app.goTo().homePage();
+    Contacts after = app.contact().all();
+    assertThat(after.size(), equalTo(before.size() + 1));
+    assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
+
   }
 }
