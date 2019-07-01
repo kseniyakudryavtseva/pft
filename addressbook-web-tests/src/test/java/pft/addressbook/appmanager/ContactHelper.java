@@ -80,10 +80,30 @@ public class ContactHelper extends HelperBase {
         {
             String firstname = element.findElement(By.xpath(".//td[3]")).getText();
             String lastname = element.findElement(By.xpath(".//td[2]")).getText();
+            String allPhones = element.findElement(By.xpath(".//td[6]")).getText();
+            String address = element.findElement(By.xpath(".//td[4]")).getText();
+            String allEmails = element.findElement(By.xpath(".//td[5]")).getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
+            contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname).withAddress(address)
+                .withAllEmails(allEmails).withAllPhones(allPhones));
         }
         return contacts;
     }
 
+    public ContactData infoFromEditForm(ContactData contact) {
+        initContactModificationByID(contact.getId());
+        String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
+        String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+        String homephone = wd.findElement(By.name("home")).getAttribute("value");
+        String mobilephome = wd.findElement(By.name("mobile")).getAttribute("value");
+        String workphome = wd.findElement(By.name("work")).getAttribute("value");
+        String address = wd.findElement(By.name("address")).getAttribute("value");
+        String email = wd.findElement(By.name("email")).getAttribute("value");
+        String email2 = wd.findElement(By.name("email2")).getAttribute("value");
+        String email3 = wd.findElement(By.name("email3")).getAttribute("value");
+        wd.navigate().back();
+        return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withHomephone(homephone)
+                .withMobilephone(mobilephome).withtWorkphone(workphome).withAddress(address).withEmail(email)
+                .withtEmail2(email2).withEmail3(email3);
+    }
 }

@@ -1,12 +1,7 @@
 package pft.addressbook.tests;
-
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pft.addressbook.model.ContactData;
 import pft.addressbook.model.Contacts;
-
-import java.util.Set;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
