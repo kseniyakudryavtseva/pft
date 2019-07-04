@@ -6,9 +6,7 @@ import org.openqa.selenium.WebElement;
 import pft.addressbook.model.ContactData;
 import pft.addressbook.model.Contacts;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -24,6 +22,13 @@ public class ContactHelper extends HelperBase {
         type(By.name("middlename"), contactData.getMiddlename());
         type(By.name("lastname"), contactData.getLastname());
         type(By.name("home"), contactData.getHomephone());
+        type(By.name("work"), contactData.getWorkphone());
+        type(By.name("mobile"), contactData.getMobilephone());
+        type(By.name("address"), contactData.getAddress());
+        type(By.name("email"), contactData.getEmail());
+        type(By.name("email2"), contactData.getEmail2());
+        type(By.name("email3"), contactData.getEmail3());
+
        }
 
     public void initContactCreation() {
@@ -104,6 +109,6 @@ public class ContactHelper extends HelperBase {
         wd.navigate().back();
         return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withHomephone(homephone)
                 .withMobilephone(mobilephome).withtWorkphone(workphome).withAddress(address).withEmail(email)
-                .withtEmail2(email2).withEmail3(email3);
+                .withEmail2(email2).withEmail3(email3);
     }
 }

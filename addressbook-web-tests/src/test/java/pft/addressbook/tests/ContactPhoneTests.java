@@ -1,7 +1,5 @@
 package pft.addressbook.tests;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pft.addressbook.model.ContactData;
@@ -19,7 +17,7 @@ public class ContactPhoneTests extends TestBase {
         if (app.contact().all().size() == 0){
             app.contact().create(new ContactData().withFirstname("Name1").withMiddlename("Middle name1")
                     .withLastname("Last name1").withHomephone("9999999999").withHomephone("3333").withMobilephone("5555")
-                    .withtWorkphone("4444").withAddress("moscow").withEmail("123@mail.ru").withtEmail2("234@mail.ru")
+                    .withtWorkphone("4444").withAddress("moscow").withEmail("123@mail.ru").withEmail2("234@mail.ru")
                     .withEmail3("345@mail.ru"));
         }
     }

@@ -1,8 +1,13 @@
 package pft.addressbook.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
 import java.util.Objects;
 
+@XStreamAlias("contact")
 public class ContactData {
+    @XStreamOmitField
     private int id = Integer.MAX_VALUE;;
     private String firstname;
     private String middlename;
@@ -62,7 +67,7 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withtEmail2(String email2) {
+    public ContactData withEmail2(String email2) {
         this.email2 = email2;
         return this;
     }

@@ -1,19 +1,43 @@
 package pft.addressbook.tests;
+import com.thoughtworks.xstream.XStream;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pft.addressbook.model.ContactData;
 import pft.addressbook.model.Contacts;
+import pft.addressbook.model.GroupData;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 
 public class ContactCreationTests extends TestBase {
+  @DataProvider
+  public Iterator<Object[]> validContacts() throws IOException {
+    BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/contacts.xml"));
+    String xml="";
 
-  @Test
-  public void testContactCreation() throws Exception {
+    String line = reader.readLine();
+    while (line!= null){
+      xml +=line;
+      line = reader.readLine();
+    }
+    XStream xStream = new XStream();
+    xStream.processAnnotations(ContactData.class);
+    List<ContactData> contacts = (List<ContactData>) xStream.fromXML(xml);
+    return contacts.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
+  }
+
+  @Test (dataProvider = "validContacts")
+  public void testContactCreation(ContactData contact) throws Exception {
     app.goTo().homePage();
     Contacts before = app.contact().all();
-    ContactData contact = new ContactData().withFirstname("Name1").withMiddlename("Middle name1")
-            .withLastname("Last name1").withHomephone("9999999999");
     app.contact().create(contact);
     app.goTo().homePage();
     Contacts after = app.contact().all();
