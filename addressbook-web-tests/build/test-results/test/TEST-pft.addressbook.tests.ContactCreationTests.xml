@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pft.addressbook.tests.ContactCreationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-07-08T19:36:48" hostname="Alinchik" time="39.964">
+  <properties/>
+  <testcase name="testContactCreation[0](ContactData{firstname='firstname 0', lastname='lastname 0'})" classname="pft.addressbook.tests.ContactCreationTests" time="39.964"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Security framework of XStream not initialized, XStream is probably vulnerable.
+]]></system-err>
+</testsuite>

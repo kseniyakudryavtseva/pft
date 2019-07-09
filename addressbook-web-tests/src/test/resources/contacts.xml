@@ -11,28 +11,4 @@
     <email2>email2 0</email2>
     <email3>email3 0</email3>
   </contact>
-  <contact>
-    <firstname>firstname 1</firstname>
-    <middlename>middlename 1</middlename>
-    <lastname>lastname 1</lastname>
-    <homephone>homephone 1</homephone>
-    <mobilephone>mobilephone 1</mobilephone>
-    <workphone>workphone 1</workphone>
-    <address>address 1</address>
-    <email>email 1</email>
-    <email2>email2 1</email2>
-    <email3>email3 1</email3>
-  </contact>
-  <contact>
-    <firstname>firstname 2</firstname>
-    <middlename>middlename 2</middlename>
-    <lastname>lastname 2</lastname>
-    <homephone>homephone 2</homephone>
-    <mobilephone>mobilephone 2</mobilephone>
-    <workphone>workphone 2</workphone>
-    <address>address 2</address>
-    <email>email 2</email>
-    <email2>email2 2</email2>
-    <email3>email3 2</email3>
-  </contact>
 </list>

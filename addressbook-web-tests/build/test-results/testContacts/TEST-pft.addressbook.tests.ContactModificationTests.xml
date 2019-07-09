@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pft.addressbook.tests.ContactModificationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-07-09T17:47:38" hostname="Alinchik" time="10.513">
+  <properties/>
+  <testcase name="testContactModification" classname="pft.addressbook.tests.ContactModificationTests" time="10.513"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
