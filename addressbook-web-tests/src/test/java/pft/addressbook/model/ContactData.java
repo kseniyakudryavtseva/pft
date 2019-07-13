@@ -2,24 +2,50 @@ package pft.addressbook.model;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.util.Objects;
 
 @XStreamAlias("contact")
+@Entity
+@Table (name = "addressbook")
 public class ContactData {
+
     @XStreamOmitField
+    @Id
+    @Column (name = "id")
     private int id = Integer.MAX_VALUE;;
+    @Column (name = "firstname")
     private String firstname;
+    @Column (name = "middlename")
     private String middlename;
+    @Column (name = "lastname")
     private String lastname;
+    @Column (name = "home")
+    @Type(type = "text")
     private String homephone;
+    @Column (name = "mobile")
+    @Type(type = "text")
     private String mobilephone;
+    @Column (name = "work")
+    @Type(type = "text")
     public  String workphone;
+    @Column (name = "address")
+    @Type(type = "text")
     public String address;
+    @Column (name = "email")
+    @Type(type = "text")
     public String email;
+    @Column (name = "email2")
+    @Type(type = "text")
     public String email2;
+    @Column (name = "email3")
+    @Type(type = "text")
     public String email3;
+    @Transient
     public String allEmails;
+    @Transient
     public String allPhones;
 
 
@@ -136,11 +162,19 @@ public class ContactData {
         ContactData that = (ContactData) o;
         return id == that.id &&
                 Objects.equals(firstname, that.firstname) &&
-                Objects.equals(lastname, that.lastname);
+                Objects.equals(middlename, that.middlename) &&
+                Objects.equals(lastname, that.lastname) &&
+                Objects.equals(homephone, that.homephone) &&
+                Objects.equals(mobilephone, that.mobilephone) &&
+                Objects.equals(workphone, that.workphone) &&
+                Objects.equals(address, that.address) &&
+                Objects.equals(email, that.email) &&
+                Objects.equals(email2, that.email2) &&
+                Objects.equals(email3, that.email3);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstname, lastname);
+        return Objects.hash(id, firstname, middlename, lastname, homephone, mobilephone, workphone, address, email, email2, email3);
     }
 }
