@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import pft.addressbook.model.ContactData;
 import pft.addressbook.model.Contacts;
 import pft.addressbook.model.GroupData;
+import pft.addressbook.model.Groups;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -43,6 +44,28 @@ public class ContactCreationTests extends TestBase {
     Contacts after = app.db().contacts();
     assertThat(after.size(), equalTo(before.size() + 1));
     assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
-
+    verifyContactListInUI();
   }
+/*
+  @Test (dataProvider = "validContacts")
+  public void testAddingContactToGroup(ContactData contact){
+
+    if (app.db().groups().size() == 0) {
+      app.goTo().groupPage();
+      app.group().create(new GroupData().withName("test1").withHeader("test2").withFooter("test3"));
+    }
+    if (app.db().contacts().size() == 0){
+      app.goTo().homePage();
+      app.contact().create(new ContactData().withFirstname("sergey")
+              .withMiddlename("petrovich").withLastname("ivanov").withHomephone("5555555")
+              .withtWorkphone("123").withMobilephone("999").withAddress("moscow")
+              .withEmail("1@mail.ru").withEmail2("2@mail.ru").withEmail3("3@mail.ru"));
+    }
+      Groups groups = app.db().groups();
+      app.goTo().homePage();
+
+
+
+      //app.contact().create(contact.inGroup(groups.iterator().next()));
+  }*/
 }
